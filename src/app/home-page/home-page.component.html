@@ -1,0 +1,255 @@
+<!-- Notification Toast -->
+<div id="toast" class="fixed top-24 right-5 z-50 transform translate-x-full transition-transform duration-300 ease-out">
+  <div class="bg-white border-l-4 border-sage-500 shadow-lg rounded-md p-4 flex items-center gap-3 min-w-[300px]">
+    <i class="ph-fill ph-check-circle text-sage-500 text-2xl"></i>
+    <div>
+      <h4 class="font-bold text-sm text-gray-800">Sucesso!</h4>
+      <p class="text-xs text-gray-600">Produto adicionado à sacola.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav id="navbar" (window:scroll)="onScroll($event)" class="fixed w-full z-40 bg-white/90 backdrop-blur-md border-b border-sand-200 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+    <!-- Mobile Menu Button -->
+    <button (click)="toggleMenu()" class="md:hidden text-2xl text-sage-900 focus:outline-none">
+      <i class="ph ph-list"></i>
+    </button>
+
+    <!-- Logo -->
+    <div class="flex-shrink-0 flex items-center justify-center md:justify-start flex-1 md:flex-none">
+      <a href="#" class="font-serif text-3xl text-sage-900 tracking-wider font-semibold flex items-center gap-2">
+        <i class="ph-fill ph-plant text-sage-500"></i>
+        Delicato Aromas
+      </a>
+    </div>
+
+    <!-- Desktop Links -->
+    <div class="hidden md:flex space-x-8 items-center">
+      <a href="#collections" class="text-sm uppercase tracking-widest hover:text-sage-500 transition-colors">Coleções</a>
+      <a href="#bestsellers" class="text-sm uppercase tracking-widest hover:text-sage-500 transition-colors">Mais Vendidos</a>
+      <a href="#sobre" class="text-sm uppercase tracking-widest hover:text-sage-500 transition-colors">Sobre</a>
+    </div>
+
+    <!-- Icons -->
+    <div class="flex items-center space-x-5 text-xl text-sage-900">
+      <button class="hover:text-sage-500 transition-colors"><i class="ph ph-magnifying-glass"></i></button>
+      <button class="hover:text-sage-500 transition-colors relative">
+        <i class="ph ph-shopping-bag"></i>
+        <span id="cart-count" class="absolute -top-1 -right-2 bg-sage-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
+          [class.opacity-0]="cartCount === 0">{{ cartCount }}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sand-200">
+    <div class="px-4 pt-2 pb-6 space-y-2">
+      <a href="#collections" class="block px-3 py-2 text-base font-medium hover:bg-sand-50 rounded-md">Coleções</a>
+      <a href="#bestsellers" class="block px-3 py-2 text-base font-medium hover:bg-sand-50 rounded-md">Mais Vendidos</a>
+      <a href="#about" class="block px-3 py-2 text-base font-medium hover:bg-sand-50 rounded-md">Sobre Nós</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="assets/candle.jpg" alt="Velas aromáticas"
+      class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/30"></div>
+  </div>
+
+  <div class="relative z-10 text-center px-4 max-w-4xl mx-auto text-white animate-fade-up">
+    <span class="block text-sm md:text-base uppercase tracking-[0.3em] mb-4 opacity-90">Produto 100% artesanal</span>
+    <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight">
+      A essência do <br/><i class="font-light italic">seu refúgio</i>
+    </h1>
+    <p class="text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto text-sand-50">
+      Fragrâncias criadas manualmente para transformar sua casa em um santuário de paz e equilíbrio.
+    </p>
+    <a href="#bestsellers"
+      class="inline-block bg-black text-sage-900 px-8 py-4 text-sm uppercase tracking-widest hover:bg-sage-50 transition-colors duration-300 font-semibold shadow-lg">
+      Descobrir Aromas
+    </a>
+  </div>
+</header>
+
+<!-- Features Section -->
+<section class="py-16 bg-white border-b border-sand-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div class="p-6">
+        <i class="ph ph-plant text-4xl text-sage-500 mb-4 block"></i>
+        <h3 class="font-serif text-xl mb-2">100% Artesanal</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Produtos selecionados e óleos essenciais puros.</p>
+      </div>
+      <div class="p-6">
+        <i class="ph ph-hand-heart text-4xl text-sage-500 mb-4 block"></i>
+        <h3 class="font-serif text-xl mb-2">Feito à Mão</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Produzido em pequenos lotes no Brasil.</p>
+      </div>
+      <div class="p-6">
+        <i class="ph ph-recycle text-4xl text-sage-500 mb-4 block"></i>
+        <h3 class="font-serif text-xl mb-2">Embalagem Eco</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">Vidros reutilizáveis e embalagens sem plástico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bestsellers Section -->
+<section id="bestsellers" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-serif text-sage-900 mb-12 text-center">Bestsellers</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+      <!-- Produto 1 -->
+      <div class="group relative">
+        <div class="relative aspect-[3/4] bg-gray-200 overflow-hidden mb-4">
+          <img src="assets/unnamed.jpg"
+               alt="Vela Lavanda"
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-white/90 text-sage-900 text-[10px] font-bold px-2 py-1 uppercase tracking-wide">Best Seller</span>
+          <button (click)="addToCart()"
+                  class="absolute bottom-4 left-4 right-4 bg-white/95 text-sage-900 py-3 text-sm uppercase tracking-wide font-medium opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 hover:bg-sage-900 hover:text-white shadow-md">
+            Adicionar - R$ 89,00
+          </button>
+        </div>
+
+        <div class="text-center">
+          <h3 class="font-serif text-xl text-sage-900">Lavanda & Sândalo</h3>
+          <p class="text-gray-500 text-sm mt-1">Calma e Serenidade</p>
+          <p class="font-medium text-sage-700 mt-2">R$ 89,00</p>
+        </div>
+      </div>
+
+      <!-- Produto 2 -->
+      <div class="group relative">
+        <div class="relative aspect-[3/4] bg-gray-200 overflow-hidden mb-4">
+          <img src="assets/rose.jpg"
+               alt="Vela Rosa"
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-white/90 text-sage-900 text-[10px] font-bold px-2 py-1 uppercase tracking-wide">New</span>
+          <button (click)="addToCart()"
+                  class="absolute bottom-4 left-4 right-4 bg-white/95 text-sage-900 py-3 text-sm uppercase tracking-wide font-medium opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 hover:bg-sage-900 hover:text-white shadow-md">
+            Adicionar - R$ 99,00
+          </button>
+        </div>
+
+        <div class="text-center">
+          <h3 class="font-serif text-xl text-sage-900">Rosa & Jasmim</h3>
+          <p class="text-gray-500 text-sm mt-1">Energia e Bem-estar</p>
+          <p class="font-medium text-sage-700 mt-2">R$ 99,00</p>
+        </div>
+      </div>
+
+      <!-- Produto 3 (exemplo adicional) -->
+      <div class="group relative">
+        <div class="relative aspect-[3/4] bg-gray-200 overflow-hidden mb-4">
+          <img src="assets/vanilla.jpg"
+               alt="Vela Vanilla"
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-white/90 text-sage-900 text-[10px] font-bold px-2 py-1 uppercase tracking-wide">Popular</span>
+          <button (click)="addToCart()"
+                  class="absolute bottom-4 left-4 right-4 bg-white/95 text-sage-900 py-3 text-sm uppercase tracking-wide font-medium opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 hover:bg-sage-900 hover:text-white shadow-md">
+            Adicionar - R$ 79,00
+          </button>
+        </div>
+
+        <div class="text-center">
+          <h3 class="font-serif text-xl text-sage-900">Baunilha & Canela</h3>
+          <p class="text-gray-500 text-sm mt-1">Aconchego e Relaxamento</p>
+          <p class="font-medium text-sage-700 mt-2">R$ 79,00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Collections Section -->
+<section id="collections" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-serif text-3xl md:text-4xl text-center mb-12 text-sage-900">
+      Benefícios da Aromaterapia
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- CARD RELAXAR -->
+      <a href="#" class="block group rounded-sm overflow-hidden">
+
+        <!--Imagem + Texto -->
+        <div class="relative h-80 overflow-hidden">
+          <img src="assets/relaxar.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <h3 class="font-serif text-3xl text-white italic drop-shadow-md">Relaxar</h3>
+          </div>
+        </div>
+
+        <!-- TEXTO ABAIXO DA IMAGEM -->
+        <p class="text-center text-gray-700 mt-4">
+          Alivia tensões, reduz o estresse e promove bem-estar.
+        </p>
+      </a>
+
+      <!-- CARD FOCO -->
+      <a href="#" class="block group rounded-sm overflow-hidden">
+
+        <div class="relative h-80 overflow-hidden">
+          <img src="assets/foco.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <h3 class="font-serif text-3xl text-white italic drop-shadow-md">Foco</h3>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-4">
+          Melhora a concentração e estimula a clareza mental.
+        </p>
+      </a>
+  
+      <a href="#" class="block group rounded-sm overflow-hidden">
+        <div class="relative h-80 overflow-hidden">
+          <img src="assets/emocao.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <h3 class="font-serif text-3xl text-white italic drop-shadow-md">Suporte Emocional</h3>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-4">
+          Melhora a concentração e estimula a clareza mental.
+        </p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Footer -->
+<footer class="bg-sand-800 text-sand-100 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div>
+        <a href="#" class="font-serif text-2xl text-sand-50 tracking-wider flex items-center gap-2 mb-4"><i class="ph-fill ph-plant"></i> Delicato Aromas</a>
+        <p class="text-sand-200 text-sm leading-relaxed">Transformando espaços em lares através do poder da natureza e do aroma.</p>
+      </div>
+      <!-- Links adicionais -->
+    </div>
+  </div>
+  <div class="border-t border-sand-700 pt-8 flex flex-col justify-center items-center text-xs text-sand-200 gap-4">
+  <p>&copy; Delicato Aromas. Todos os direitos reservados.</p>
+  <span class="text-sand-200 text-[11px]">Siga-nos nas redes sociais</span>
+  <div class="flex items-center gap-3">
+    <a href="https://www.instagram.com/delicatoaromas.foz/" target="_blank" rel="noopener noreferrer">
+      <img class="w-9 h-9 opacity-80 hover:opacity-100 transition" src="assets/instagram.png">
+    </a>
+    <a href="https://api.whatsapp.com/message/7SYAUJKBOYB2G1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noopener noreferrer">
+      <img class="w-7 h-7 opacity-80 hover:opacity-100 transition" src="assets/whatsapp.png">
+    </a>
+  </div>
+
+</div>
+</footer>
+

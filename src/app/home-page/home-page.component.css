@@ -1,0 +1,17 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.animate-fade-up {
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Toast transition */
+#toast {
+  transition: transform 0.3s ease-out;
+}
