@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './home-page.component.html',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomepageComponent implements OnInit {
 
   cartCount: number = 0;
+  isModalOpen: boolean = false; // controla o modal
 
   constructor() { }
 
@@ -46,4 +48,25 @@ export class HomepageComponent implements OnInit {
       nav.classList.remove('py-0');
     }
   }
+
+  // ABRIR MODAL
+  openModal() {
+    this.isModalOpen = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  // FECHAR MODAL
+  closeModal() {
+    this.isModalOpen = false;
+    document.body.style.overflow = 'auto';
+  }
+
+  // ENVIO DO FORMULÁRIO
+  sendNewsletter(form: any) {
+    if (form.valid) {
+      console.log('Dados enviados:', form.value);
+      this.closeModal();
+    }
+  }
+
 }

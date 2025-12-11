@@ -1,6 +1,7 @@
 <!-- Notification Toast -->
 <div id="toast" class="fixed top-24 right-5 z-50 transform translate-x-full transition-transform duration-300 ease-out">
-  <div class="bg-white border-l-4 border-sage-500 shadow-lg rounded-md p-4 flex items-center gap-3 min-w-[300px]">
+  <div class="bg-white border-l-4 border-sage-500 shadow-lg rounded-md p-4 flex items-c
+  ter gap-3 min-w-[300px]">
     <i class="ph-fill ph-check-circle text-sage-500 text-2xl"></i>
     <div>
       <h4 class="font-bold text-sm text-gray-800">Sucesso!</h4>
@@ -29,7 +30,9 @@
     <div class="hidden md:flex space-x-8 items-center">
       <a href="#collections" class="text-sm uppercase tracking-widest hover:text-sage-500 transition-colors">Coleções</a>
       <a href="#bestsellers" class="text-sm uppercase tracking-widest hover:text-sage-500 transition-colors">Mais Vendidos</a>
-      <a href="#sobre" class="text-sm uppercase tracking-widest hover:text-sage-500 transition-colors">Sobre</a>
+      <a href="/sobre" class="text-sm uppercase tracking-widest hover:text-sage-500 transition-colors">Sobre</a>
+      <button (click)="openModal()" class="text-sm uppercase tracking-widest hover:text-sage-500 transition-colors bg-transparent border-none cursor-pointer">Fique por dentro das novidades</button>
+      
     </div>
 
     <!-- Icons -->
@@ -48,7 +51,7 @@
     <div class="px-4 pt-2 pb-6 space-y-2">
       <a href="#collections" class="block px-3 py-2 text-base font-medium hover:bg-sand-50 rounded-md">Coleções</a>
       <a href="#bestsellers" class="block px-3 py-2 text-base font-medium hover:bg-sand-50 rounded-md">Mais Vendidos</a>
-      <a href="#about" class="block px-3 py-2 text-base font-medium hover:bg-sand-50 rounded-md">Sobre Nós</a>
+      <a href="AboutComponent" class="block px-3 py-2 text-base font-medium hover:bg-sand-50 rounded-md">Sobre Nós</a>
     </div>
   </div>
 </nav>
@@ -223,10 +226,6 @@
     </div>
   </div>
 </section>
-
-
-
-
 <!-- Footer -->
 <footer class="bg-sand-800 text-sand-100 pt-16 pb-8">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -238,7 +237,7 @@
       <!-- Links adicionais -->
     </div>
   </div>
-  <div class="border-t border-sand-700 pt-8 flex flex-col justify-center items-center text-xs text-sand-200 gap-4">
+<div class="border-t border-sand-700 pt-8 flex flex-col justify-center items-center text-xs text-sand-200 gap-4">
   <p>&copy; Delicato Aromas. Todos os direitos reservados.</p>
   <span class="text-sand-200 text-[11px]">Siga-nos nas redes sociais</span>
   <div class="flex items-center gap-3">
@@ -249,7 +248,92 @@
       <img class="w-7 h-7 opacity-80 hover:opacity-100 transition" src="assets/whatsapp.png">
     </a>
   </div>
-
 </div>
 </footer>
 
+  <!-- Botão para abrir o modal -->
+  <button (click)="openModal()" class="text-sm uppercase tracking-widest hover:text-sage-500 transition-colors">
+    Fique por dentro das novidades
+  </button>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sand-200">
+  <div class="px-4 pt-2 pb-6 space-y-2">
+    <a href="#collections" class="block px-3 py-2 text-base font-medium hover:bg-sand-50 rounded-md">Coleções</a>
+    <a href="#bestsellers" class="block px-3 py-2 text-base font-medium hover:bg-sand-50 rounded-md">Mais Vendidos</a>
+    <a href="AboutComponent" class="block px-3 py-2 text-base font-medium hover:bg-sand-50 rounded-md">Sobre Nós</a>
+
+
+    <!-- Botão mobile para abrir o modal -->
+    <button (click)="openModal()" class="w-full text-left px-3 py-2 text-base font-medium hover:bg-sand-50 rounded-md">
+      Fique por dentro das novidades
+    </button>
+  </div>
+</div>
+
+<!-- MODAL DE NEWSLETTER -->
+<div 
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-[999] transition-opacity duration-300"
+  [class.hidden]="!isModalOpen">
+
+  <div class="bg-white rounded-xl shadow-2xl w-[90%] max-w-md p-6 relative animate-fade-up">
+
+    <!-- BOTÃO DE FECHAR -->
+    <button 
+      (click)="closeModal()" 
+      class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl">
+      &times;
+    </button>
+
+    <h2 class="text-2xl font-serif text-sage-900 mb-4 text-center">
+      Fique por dentro das novidades
+    </h2>
+
+    <p class="text-gray-600 text-sm text-center mb-6">
+      Assine nossa newsletter e receba ofertas exclusivas.
+    </p>
+
+    <form #newsForm="" (ngSubmit)="sendNewsletter(newsForm)">
+      
+      <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Nome</label>
+        <input 
+          type="text" 
+          name="nome" 
+          ngModel 
+          required 
+          class="w-full border border-gray-300 rounded-md px-3 py-2">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">E-mail</label>
+        <input 
+          type="email" 
+          name="email" 
+          ngModel 
+          required 
+          class="w-full border border-gray-300 rounded-md px-3 py-2">
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-sage-900 hover:bg-sage-700 text-white py-3 rounded-md uppercase tracking-wider text-sm">
+        Inscrever-se
+      </button>
+
+      <div class="flex justify-center gap-4">
+        <button
+          type="submit"
+          class="bg-black text-white font-semibold px-6 py-2 rounded hover:bg-gray-800 transition-colors duration-300">
+          Enviar
+        </button>
+      
+        <button
+          type="submit"
+          class="bg-red-500 text-white font-semibold px-6 py-2 rounded hover:bg-red-600 transition-colors duration-300">
+          Limpar formulário
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
